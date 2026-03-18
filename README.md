@@ -1,5 +1,5 @@
 # CodeAlpha Python Programming Tasks
-A collection of Python projects completed as part of the CodeAlpha Python Programming Virtual Internship 
+A collection of small Python projects completed as part of the CodeAlpha Python Programming Virtual Internship 
 where I challenged myself to explore and build on my programming concepts with Python.
 
 ## Tasks Completed
