@@ -5,7 +5,7 @@
 import random
 
 # --- STEP 1: List of words to guess from ---
-words = ["python", "apple", "mango", "coding", "laptop"]
+words = ["python", "apple", "mango", "football", "laptop"]
 
 # Pick a random word from the list
 secret_word = random.choice(words)
@@ -19,43 +19,38 @@ guessed_letters = []
 wrong_guesses = 0
 max_wrong = 6
 
-# --- STEP 3: Show blanks for the secret word ---
-# For example if the word is "apple" it shows: _ _ _ _ _
-
 print("Welcome to Hangman!")
 print("Try to guess the word letter by letter.")
 print("You have 6 incorrect guesses allowed.")
 print("")
 
-# --- STEP 4: Game Loop - keeps running until win or lose ---
+# --- STEP 3: Game Loop - keeps running until win or lose ---
 while wrong_guesses < max_wrong:
 
-    # Show the word as blanks or correctly guessed letters
-    print("Word: ", end="")
-    
-
-    # Go through each letter in the secret word
+    # --- Build the word to display ---
+    display_word = ""
     all_guessed = True  # We assume all letters are guessed
+
     for letter in secret_word:
         if letter in guessed_letters:
-            print(letter, end=" ")  # Show the letter if guessed
+            display_word = display_word + letter + " "  # add the letter
         else:
-            print("_", end=" ")    # Show blank if not guessed yet
-            all_guessed = False    # Not all letters guessed yet
+            display_word = display_word + "_ "          # add a blank
+            all_guessed = False  # Not all letters guessed yet
 
-    print("")  # New line after showing the word
+    print("Word: " + display_word)
 
     # Show how many wrong guesses are left
     print("Wrong guesses so far:", wrong_guesses, "out of", max_wrong)
     print("Letters you guessed:", guessed_letters)
     print("")
 
-    # --- STEP 5: Check if player won ---
+    # --- STEP 4: Check if player won ---
     if all_guessed:
         print("🎉 You won! The word was:", secret_word)
         break  # Stop the game
 
-    # --- STEP 6: Ask the player to guess a letter ---
+    # --- STEP 5: Ask the player to guess a letter ---
     guess = input("Guess a letter: ")
 
     # Make the letter lowercase so capital letters still work
@@ -79,6 +74,6 @@ while wrong_guesses < max_wrong:
         guessed_letters.append(guess)      # Add to guessed list
         print("")
 
-# --- STEP 7: If player runs out of guesses ---
+# --- STEP 6: If player runs out of guesses ---
 if wrong_guesses == max_wrong:
     print("💀 Game over! The word was:", secret_word)
